@@ -12,7 +12,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import Button from "@mui/material/Button";
 import { FormInput } from "../types/interfaces";
-
+import TextInput from "../components/TextInput";
 
 function Election() {
   const { control, handleSubmit, register, resetField } = useForm<FormInput>();
@@ -28,39 +28,18 @@ function Election() {
     <Container maxWidth="sm">
       <Grid container>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Grid item sx={{ padding: "1em 0 1em 0" }}>
-            <Controller
-              name="title"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  id="outlined-basic"
-                  label="Titulo"
-                  variant="outlined"
-                  fullWidth
-                  {...field}
-                />
-              )}
-            />
-          </Grid>
-          <Grid item sx={{ padding: "1em 0 1em 0" }}>
-            <Controller
-              name="description"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <TextField
-                  id="outlined-basic"
-                  label="Descripcion"
-                  variant="outlined"
-                  fullWidth
-                  {...field}
-                />
-              )}
-            />
-          </Grid>
-
+          <TextInput
+            name="title"
+            control={control}
+            label="Titulo"
+            style={{ padding: "1em 0 1em 0" }}
+          />
+          <TextInput
+            name="description"
+            control={control}
+            label="Descripcion"
+            style={{ padding: "1em 0 1em 0" }}
+          />
           <Paper variant={"outlined"} sx={{ padding: "1em" }}>
             <Grid container sx={{ padding: "1em" }}>
               <Grid item xs={12} sx={{ padding: "0.2em" }}>
@@ -68,38 +47,22 @@ function Election() {
                   Horario de Votación
                 </Typography>
               </Grid>
-              <Grid item xs={12} md={6} sx={{ padding: "1em" }}>
-                <Controller
-                  name="date"
-                  control={control}
-                  defaultValue=""
-                  render={({ field }) => (
-                    <TextField
-                      id="outlined-basic"
-                      label="Fecha"
-                      variant="outlined"
-                      fullWidth
-                      {...field}
-                    />
-                  )}
-                />
-              </Grid>
-              <Grid item xs={12} md={6} sx={{ padding: "1em" }}>
-                <Controller
-                  name="duration"
-                  control={control}
-                  defaultValue=""
-                  render={({ field }) => (
-                    <TextField
-                      id="outlined-basic"
-                      label="Hora"
-                      variant="outlined"
-                      fullWidth
-                      {...field}
-                    />
-                  )}
-                />
-              </Grid>
+              <TextInput
+                name="date"
+                control={control}
+                label="Fecha"
+                style={{ padding: "1em" }}
+                xs={12}
+                md={6}
+              />
+              <TextInput
+                name="duration"
+                control={control}
+                label="Hora"
+                style={{ padding: "1em" }}
+                xs={12}
+                md={6}
+              />
               <Grid container>
                 <Grid
                   item
@@ -113,22 +76,14 @@ function Election() {
                 >
                   <Typography variant="body1">Duracion:</Typography>
                 </Grid>
-                <Grid item xs={12} md={6} sx={{ padding: "1em" }}>
-                  <Controller
-                    name="endDuration"
-                    control={control}
-                    defaultValue=""
-                    render={({ field }) => (
-                      <TextField
-                        id="outlined-basic"
-                        label="Hora"
-                        variant="outlined"
-                        fullWidth
-                        {...field}
-                      />
-                    )}
-                  />
-                </Grid>
+                <TextInput
+                  name="endDuration"
+                  control={control}
+                  label="Hora"
+                  style={{ padding: "1em" }}
+                  xs={12}
+                  md={6}
+                />
               </Grid>
             </Grid>
           </Paper>
