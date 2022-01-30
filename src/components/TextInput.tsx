@@ -9,10 +9,12 @@ export default function TextInput({
   name,
   defaultValue = "",
   label,
-  style,
+  style = {},
+  xs,
+  md,
 }: TextProps) {
   return (
-    <Grid item sx={style}>
+    <Grid item xs={xs} md={md} sx={style}>
       <Controller
         name={name}
         control={control}
