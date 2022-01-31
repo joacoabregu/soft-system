@@ -7,13 +7,11 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { FormTableBodyProps } from "../types/interfaces";
+import { useFormContext } from "../context/FormContext";
 
-export default function FormTableBody({
-  rows,
-  register,
-  resetField,
-}: FormTableBodyProps) {
+export default function FormTableBody() {
+  const { rows, resetField, register } = useFormContext();
+
   let resultRows = [];
 
   for (let i = 0; i < rows; i++) {

@@ -3,9 +3,9 @@ import Grid from "@mui/material/Grid";
 import { Controller } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import { TextInputProps } from "../types/interfaces";
+import { useFormContext } from "../context/FormContext";
 
 export default function TextInput({
-  control,
   name,
   defaultValue = "",
   label,
@@ -13,6 +13,8 @@ export default function TextInput({
   xs,
   md,
 }: TextInputProps) {
+  const { control } = useFormContext();
+
   return (
     <Grid item xs={xs} md={md} sx={style}>
       <Controller

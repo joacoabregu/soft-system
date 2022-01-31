@@ -6,15 +6,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { FormTableProps } from "../types/interfaces";
 import FormTableBody from "./FormTableBody";
+import { useFormContext } from "../context/FormContext";
 
-export default function FormTable({
-  columns,
-  rows,
-  resetField,
-  register,
-}: FormTableProps) {
+export default function FormTable() {
+  const { columns } = useFormContext();
+
   return (
     <TableContainer component={Paper} sx={{ marginBottom: "1em" }}>
       <Table>
@@ -29,11 +26,8 @@ export default function FormTable({
             })}
           </TableRow>
         </TableHead>
-        <FormTableBody
-          rows={rows}
-          register={register}
-          resetField={resetField}
-        />
+
+        <FormTableBody />
       </Table>
     </TableContainer>
   );
