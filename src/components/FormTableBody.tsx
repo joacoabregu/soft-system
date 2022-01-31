@@ -2,6 +2,7 @@
 import React from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
+import TableBody from "@mui/material/TableBody";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -63,5 +64,5 @@ export default function FormTableBody({
 
     resultRows.push(item);
   }
-  return resultRows;
+  return <TableBody>{resultRows}</TableBody>;
 }
