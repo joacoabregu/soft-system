@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import { Controller } from "react-hook-form";
 import TextField from "@mui/material/TextField";
-import { TextProps } from "../types/interfaces";
+import { TextInputProps } from "../types/interfaces";
 
 export default function TextInput({
   control,
@@ -12,7 +12,7 @@ export default function TextInput({
   style = {},
   xs,
   md,
-}: TextProps) {
+}: TextInputProps) {
   return (
     <Grid item xs={xs} md={md} sx={style}>
       <Controller
