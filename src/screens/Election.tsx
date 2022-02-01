@@ -12,7 +12,7 @@ import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { FormInput, TableContextValue } from "../types/interfaces";
 import TextInput from "../components/TextInput";
 import { FormContext } from "../context/FormContext";
-import { TableContext, useTableContext } from "../context/TableContext";
+import { TableContext } from "../context/TableContext";
 
 function Election() {
   const { control, handleSubmit, register, resetField } = useForm<FormInput>();
@@ -58,7 +58,7 @@ function Election() {
             />
             <TextInput
               name="description"
-              label="Descripcion"
+              label="Descripción"
               style={{ padding: "1em 0 1em 0" }}
             />
             <Paper variant={"outlined"} sx={{ padding: "1em" }}>
@@ -93,7 +93,7 @@ function Election() {
                       justifyContent: "center",
                     }}
                   >
-                    <Typography variant="body1">Duracion:</Typography>
+                    <Typography variant="body1">Duración:</Typography>
                   </Grid>
                   <TextInput
                     name="endDuration"
