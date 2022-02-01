@@ -6,8 +6,9 @@ export interface FormInput {
   title: string;
   description: string;
   date: string;
-  duration: string;
-  endDuration: string;
+  hour: string;
+  endDate: string;
+  endHour: string;
   type: string;
   candidates: {
     name?: string;
@@ -24,7 +25,7 @@ export interface FormInput {
 
 
 export interface TextInputProps {
-  name: "title" | "description" | "date" | "duration" | "endDuration" | "type";
+  name: "title" | "description" | "date" | "hour" | "endDate" | "endHour" | "type";
   defaultValue?: string;
   label: string;
   style?: SxProps<Theme> | undefined;
