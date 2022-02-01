@@ -5,12 +5,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useFormContext } from "../context/FormContext";
-
-interface TableCellImageProps {
-  table: "candidates";
-  column: "image";
-  index: number;
-}
+import { TableCellImageProps } from "../types/interfaces";
 
 export default function TableCellImage({
   table,
