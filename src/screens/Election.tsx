@@ -8,17 +8,25 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import FormTable from "../components/FormTable";
+import Dialog from "../components/Dialog"
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { FormInput, TableContextValue } from "../types/interfaces";
 import TextInput from "../components/TextInput";
 import { FormContext } from "../context/FormContext";
 import { TableContext } from "../context/TableContext";
 
+
 function Election() {
   const { control, handleSubmit, register, resetField } = useForm<FormInput>();
   const onSubmit: SubmitHandler<FormInput> = (data) => {
     console.log(data);
   };
+
+  const [openDialog, setOpenDialog] = React.useState(false);
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+  
 
   const [rowsCandidates, setRowsCandidates] = React.useState<number>(1);
   const [rowsVoters, setRowsVoters] = React.useState<number>(1);
@@ -172,10 +180,12 @@ function Election() {
             <Button
               variant="contained"
               type="submit"
+              onClick={handleOpenDialog}
               sx={{ marginBottom: "1em" }}
             >
               Crear elección
             </Button>
+            <Dialog open={openDialog} setDialog={setOpenDialog} />
           </form>
         </Grid>
       </FormContext.Provider>

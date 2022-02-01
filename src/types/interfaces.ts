@@ -53,3 +53,8 @@ export interface TableCellImageProps {
   column: "image";
   index: number;
 }
+
+export interface DialogProps {
+  open: boolean;
+  setDialog: React.Dispatch<React.SetStateAction<boolean>>;
+}
