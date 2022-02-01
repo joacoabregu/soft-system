@@ -64,10 +64,20 @@ function Election() {
             <Paper variant={"outlined"} sx={{ padding: "1em" }}>
               <Grid container sx={{ padding: "1em" }}>
                 <Grid item xs={12} sx={{ padding: "0.2em" }}>
-                  <Typography variant="body1" gutterBottom>
+                  <Typography
+                    variant="body1"
+                    sx={{ fontSize: 22 }}
+                    gutterBottom
+                  >
                     Horario de Votación
                   </Typography>
                 </Grid>
+                <Grid item xs={12} sx={{ padding: "0.2em" }}>
+                  <Typography variant="body1" gutterBottom>
+                    Desde
+                  </Typography>
+                </Grid>
+
                 <TextInput
                   name="date"
                   label="Fecha"
@@ -76,33 +86,33 @@ function Election() {
                   md={6}
                 />
                 <TextInput
-                  name="duration"
+                  name="hour"
                   label="Hora"
                   style={{ padding: "1em" }}
                   xs={12}
                   md={6}
                 />
-                <Grid container>
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Typography variant="body1">Duración:</Typography>
-                  </Grid>
-                  <TextInput
-                    name="endDuration"
-                    label="Hora"
-                    style={{ padding: "1em" }}
-                    xs={12}
-                    md={6}
-                  />
+
+                <Grid item xs={12} sx={{ padding: "0.2em" }}>
+                  <Typography variant="body1" gutterBottom>
+                    Hasta
+                  </Typography>
                 </Grid>
+
+                <TextInput
+                  name="endDate"
+                  label="Fecha"
+                  style={{ padding: "1em" }}
+                  xs={12}
+                  md={6}
+                />
+                <TextInput
+                  name="endHour"
+                  label="Hora"
+                  style={{ padding: "1em" }}
+                  xs={12}
+                  md={6}
+                />
               </Grid>
             </Paper>
 
