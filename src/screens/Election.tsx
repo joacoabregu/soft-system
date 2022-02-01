@@ -5,14 +5,14 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import RadioGroup from "@mui/material/RadioGroup";
 import Radio from "@mui/material/Radio";
 import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import FormTable from "../components/FormTable";
-import AddIcon from "@mui/icons-material/Add";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import Button from "@mui/material/Button";
-import { FormInput } from "../types/interfaces";
+import { FormInput, TableContextValue } from "../types/interfaces";
 import TextInput from "../components/TextInput";
 import { FormContext } from "../context/FormContext";
+import { TableContext, useTableContext } from "../context/TableContext";
 
 function Election() {
   const { control, handleSubmit, register, resetField } = useForm<FormInput>();
@@ -20,16 +20,30 @@ function Election() {
     console.log(data);
   };
 
-  const [rows, setRows] = React.useState<number>(1);
+  const [rowsCandidates, setRowsCandidates] = React.useState<number>(1);
+  const [rowsVoters, setRowsVoters] = React.useState<number>(1);
 
-  const columns = ["Nombre", "Descripción", "Imagen"];
+  const tableCandidates: TableContextValue = {
+    tableName: "candidates",
+    title: "Candidatos",
+    rows: ["name", "description", "image"],
+    columns: ["Nombre", "Descripción", "Imagen"],
+    rowsNumber: rowsCandidates,
+    setRowsNumber: setRowsCandidates,
+  };
+  const tableVoters: TableContextValue = {
+    tableName: "voters",
+    title: "Votantes",
+    rows: ["id", "name", "email", "wallet"],
+    columns: ["Id", "Nombre", "Email", "Billetera"],
+    rowsNumber: rowsVoters,
+    setRowsNumber: setRowsVoters,
+  };
 
   const formContextValue = {
     control,
     register,
     resetField,
-    rows,
-    columns,
   };
 
   return (
@@ -137,22 +151,19 @@ function Election() {
                 />
               </Grid>
             </Grid>
-            <Grid
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginBottom: "1em",
-              }}
-            >
-              <Typography>Candidatos</Typography>
-              <Button variant="contained" onClick={() => setRows(rows + 1)}>
-                <AddIcon />
-              </Button>
-            </Grid>
-            <FormTable />
 
-            <Button variant="contained" type="submit" value="Crear elección">
+            <TableContext.Provider value={tableCandidates}>
+              <FormTable />
+            </TableContext.Provider>
+            <TableContext.Provider value={tableVoters}>
+              <FormTable />
+            </TableContext.Provider>
+
+            <Button
+              variant="contained"
+              type="submit"
+              sx={{ marginBottom: "1em" }}
+            >
               Crear elección
             </Button>
           </form>
