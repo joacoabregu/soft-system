@@ -14,26 +14,41 @@ export interface FormInput {
     description?: string;
     image?: File;
   }[];
-}
-export interface FormTableProps {
-  columns: string[];
-  rows: number;
-  register: UseFormRegister<FormInput>;
-  resetField: UseFormResetField<FormInput>;
+  voters: {
+    id: string;
+    name: string;
+    email: string;
+    wallet: string;
+  }[];
 }
 
-export interface FormTableBodyProps {
-  rows: number;
-  register: UseFormRegister<FormInput>;
-  resetField: UseFormResetField<FormInput>;
-}
 
 export interface TextInputProps {
-  control: Control<FormInput, object>;
   name: "title" | "description" | "date" | "duration" | "endDuration" | "type";
   defaultValue?: string;
   label: string;
   style?: SxProps<Theme> | undefined;
-  xs?: number
-  md?: number
+  xs?: number;
+  md?: number;
+}
+
+export interface FormContextValue {
+  control: Control<FormInput, object>;
+  register: UseFormRegister<FormInput>;
+  resetField: UseFormResetField<FormInput>;
+}
+
+export interface TableContextValue {
+  tableName: "candidates" | "voters";
+  title: string;
+  rows: ["name", "description", "image"] | ["id", "name", "email", "wallet"];
+  columns: string[];
+  rowsNumber: number;
+  setRowsNumber: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export interface TableCellImageProps {
+  table: "candidates";
+  column: "image";
+  index: number;
 }
