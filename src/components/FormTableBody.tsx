@@ -4,62 +4,70 @@ import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
+import TableCellImage from "./TableCellImage";
 import { useFormContext } from "../context/FormContext";
+import { useTableContext } from "../context/TableContext";
 
 export default function FormTableBody() {
-  const { rows, resetField, register } = useFormContext();
+  const { register } = useFormContext();
+  const { tableName, rowsNumber, rows } = useTableContext();
 
   let resultRows = [];
 
-  for (let i = 0; i < rows; i++) {
+  for (let i = 0; i < rowsNumber; i++) {
     const item = (
       <TableRow
         key={i}
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
       >
-        <TableCell>
-          <TextField
-            {...register(`candidates.${i}.name`, { required: true })}
-            id="outlined-basic"
-            fullWidth
-            size="small"
-          />
-        </TableCell>
-        <TableCell>
-          <TextField
-            {...register(`candidates.${i}.description`, { required: true })}
-            id="outlined-basic"
-            fullWidth
-            size="small"
-          />
-        </TableCell>
-        <TableCell sx={{ display: "flex", alignItems: "center" }}>
-          <label htmlFor="contained-button-file">
-            <input
-              {...register(`candidates.${i}.image`)}
-              accept="image/*"
-              id="contained-button-file"
-              multiple
-              type="file"
-              css={{ display: "none" }}
-            />
-            <Button variant="contained" component="span" size="small">
-              Imagen
-            </Button>
-          </label>
-          <IconButton
-            aria-label="delete"
-            onClick={() => resetField(`candidates.${i}.image`)}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </TableCell>
+        {rows.map((row) => {
+          if (row === "image") {
+            return (
+              <TableCellImage
+                key={`${row}-${i}`}
+                table="candidates"
+                index={i}
+                column="image"
+              />
+            );
+          }
+          if (
+            tableName === "candidates" &&
+            (row === "description" || row === "name")
+          ) {
+            return (
+              <TableCell key={`${row}-${i}`}>
+                <TextField
+                  {...register(`${tableName}.${i}.${row}`, { required: true })}
+                  id="outlined-basic"
+                  fullWidth
+                  size="small"
+                />
+              </TableCell>
+            );
+          }
+          if (
+            tableName === "voters" &&
+            (row === "id" ||
+              row === "name" ||
+              row === "email" ||
+              row === "wallet")
+          ) {
+            return (
+              <TableCell key={`${row}-${i}`}>
+                <TextField
+                  {...register(`${tableName}.${i}.${row}`, { required: true })}
+                  id="outlined-basic"
+                  fullWidth
+                  size="small"
+                />
+              </TableCell>
+            );
+          }
+          return null;
+        })}
       </TableRow>
     );
-
     resultRows.push(item);
   }
   return <TableBody>{resultRows}</TableBody>;
