@@ -16,10 +16,11 @@ export default function TextInput({
   const { control } = useFormContext();
 
   return (
-    <Grid item xs={xs} md={md} sx={style}>
+    <Grid item xs={xs} md={md} sx={{ ...style }}>
       <Controller
         name={name}
         control={control}
+        rules={{ required: true }}
         defaultValue={defaultValue}
         render={({ field }) => (
           <TextField
@@ -27,6 +28,7 @@ export default function TextInput({
             label={label}
             variant="outlined"
             fullWidth
+            sx={{ backgroundColor: "#f3f3f3", borderRadius: 4 }}
             {...field}
           />
         )}
