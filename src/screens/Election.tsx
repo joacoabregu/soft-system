@@ -1,13 +1,12 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import RadioGroup from "@mui/material/RadioGroup";
-import Radio from "@mui/material/Radio";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import FormTable from "../components/FormTable";
+import TextField from "@mui/material/TextField";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Dialog from "../components/Dialog";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { FormInput, TableContextValue } from "../types/interfaces";
@@ -15,6 +14,10 @@ import TextInput from "../components/TextInput";
 import { FormContext } from "../context/FormContext";
 import { TableContext } from "../context/TableContext";
 import Divider from "@mui/material/Divider";
+import DateAdapter from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
+import TimePicker from "@mui/lab/TimePicker";
 
 function Election() {
   const {
@@ -61,6 +64,7 @@ function Election() {
     register,
     resetField,
   };
+  console.log("render");
 
   return (
     <Container
@@ -74,113 +78,112 @@ function Election() {
       <FormContext.Provider value={formContextValue}>
         <Grid container>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <TextInput
-              name="title"
-              label="Titulo"
-              style={{ padding: "1em 0 1em 0" }}
-            />
+            <TextInput name="title" label="Titulo" />
 
-            <TextInput
-              name="description"
-              label="Descripción"
-              style={{ padding: "1em 0 1em 0" }}
-            />
+            <TextInput name="description" label="Descripción" />
 
             <Grid container>
-              <Grid item xs={12} >
+              <Grid item xs={12}>
                 <Typography
                   variant="body1"
-                  sx={{ fontSize: 22 }}
-                  gutterBottom
                   textAlign="left"
+                  sx={{ marginBottom: "1.2em" }}
                 >
                   Horario de Votación
                 </Typography>
               </Grid>
-              <Grid item xs={12} sx={{ padding: "0.2em" }}>
-                <Typography variant="body1" gutterBottom>
-                  Desde
-                </Typography>
-              </Grid>
 
-              <TextInput
-                name="date"
-                label="Fecha"
-                style={{ padding: "1em" }}
-                xs={12}
-                md={6}
-              />
-              <TextInput
-                name="hour"
-                label="Hora"
-                style={{ padding: "1em" }}
-                xs={12}
-                md={6}
-              />
-
-              <Grid item xs={12} sx={{ padding: "0.2em" }}>
-                <Typography variant="body1" gutterBottom>
-                  Hasta
-                </Typography>
-              </Grid>
-
-              <TextInput
-                name="endDate"
-                label="Fecha"
-                style={{ padding: "1em" }}
-                xs={12}
-                md={6}
-              />
-              <TextInput
-                name="endHour"
-                label="Hora"
-                style={{ padding: "1em" }}
-                xs={12}
-                md={6}
-              />
-            </Grid>
-
-            <Grid container sx={{ padding: "1em" }}>
+              <LocalizationProvider dateAdapter={DateAdapter}>
+                <Grid
+                  item
+                  xs={12}
+                  md={4}
+                  sx={{
+                    paddingRight: { xs: "0", md: "1em" },
+                  }}
+                >
+                  <Controller
+                    name="date"
+                    control={control}
+                    render={({ field }) => (
+                      <DatePicker
+                        label="Fecha"
+                        {...field}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    )}
+                  ></Controller>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  md={4}
+                  sx={{
+                    padding: { xs: "0", md: "0 0.5em 0 0.5em" },
+                  }}
+                >
+                  <Controller
+                    name="hour"
+                    control={control}
+                    render={({ field }) => (
+                      <TimePicker
+                        label="Hora"
+                        {...field}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    )}
+                  ></Controller>
+                </Grid>
+              </LocalizationProvider>
               <Grid
                 item
                 xs={12}
-                sm={6}
+                md={4}
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
+                  paddingLeft: { xs: "0", md: "1em" },
                 }}
               >
-                <Typography variant="body1" gutterBottom>
+                <Controller
+                  name="endHour"
+                  control={control}
+                  rules={{ required: true }}
+                  defaultValue=""
+                  render={({ field }) => (
+                    <TextField
+                      id="outlined-basic"
+                      label="Duración"
+                      InputLabelProps={{ shrink: true }}
+                      variant="outlined"
+                      type="time"
+                      fullWidth
+                      sx={{ backgroundColor: "#f3f3f37d", borderRadius: 4 }}
+                      {...field}
+                    />
+                  )}
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container sx={{ marginBottom: "1.5em" }}>
+              <Grid item xs={12}>
+                <Typography variant="body1" align="left">
                   Tipo de Votación:
                 </Typography>
               </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={6}
-                sx={{ display: "flex", justifyContent: "center" }}
-              >
+              <Grid item xs={12}>
                 <Controller
                   name="type"
                   control={control}
-                  defaultValue="billetera"
+                  defaultValue="token"
                   render={({ field }) => (
-                    <RadioGroup
-                      aria-labelledby="demo-radio-buttons-group-label"
-                      {...field}
-                    >
-                      <FormControlLabel
-                        value="billetera"
-                        control={<Radio />}
-                        label="Por Billetera"
-                      />
-                      <FormControlLabel
-                        value="token"
-                        control={<Radio />}
-                        label="Por Token"
-                      />
-                    </RadioGroup>
+                    <ToggleButtonGroup color="primary" exclusive {...field}>
+                      <ToggleButton value="token" size="large">
+                        Token
+                      </ToggleButton>
+                      <ToggleButton value="billetera" size="large">
+                        Billetera
+                      </ToggleButton>
+                    </ToggleButtonGroup>
                   )}
                 />
               </Grid>
