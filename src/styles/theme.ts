@@ -6,7 +6,6 @@ declare module "@mui/material/styles" {
       white: string;
     };
   }
-  // allow configuration using `createTheme`
   interface ThemeOptions {
     back?: {
       white?: string;
@@ -16,11 +15,12 @@ declare module "@mui/material/styles" {
 
 const theme = createTheme({
   palette: {
+    primary: { main: "#545454" },
+
     background: {
       default: "#dddddd",
     },
   },
-
   back: {
     white: "#FFF",
   },
@@ -30,6 +30,7 @@ const theme = createTheme({
       fontSize: "2.3rem",
       fontWeight: 500,
     },
+
     fontFamily: [
       "Poppins",
       "-apple-system",
@@ -45,22 +46,36 @@ const theme = createTheme({
     ].join(","),
   },
   components: {
-    // Name of the component
     MuiOutlinedInput: {
       styleOverrides: {
-        // Name of the slot
         root: {
-          // Some CSS
+          backgroundColor: "#f3f3f37d",
           borderRadius: 16,
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          width: "100%",
+          marginBottom: "2em",
         },
       },
     },
     MuiDivider: {
       styleOverrides: {
-        // Name of the slot
         root: {
-          // Some CSS
-          margin: "1em 0 1em 0",
+          margin: "1em 0 1.5em 0",
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          "&:hover": {
+            borderColor: "#545454",
+            backgroundColor: " #f3f3f37d",
+          },
         },
       },
     },
