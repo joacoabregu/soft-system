@@ -23,7 +23,7 @@ function Election() {
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitted },
+    formState: { isSubmitted },
     register,
     resetField,
   } = useForm<FormInput>();
@@ -64,12 +64,16 @@ function Election() {
     register,
     resetField,
   };
-  console.log("render");
 
   return (
     <Container
-      maxWidth="sm"
-      sx={{ backgroundColor: "white", borderRadius: 2, padding: "1.5em" }}
+      maxWidth="md"
+      sx={{
+        backgroundColor: "white",
+        borderRadius: 2,
+        padding: "3em",
+      }}
+      disableGutters={true}
     >
       <Typography variant="h1" gutterBottom={true} align="left">
         Crear Elección
@@ -79,20 +83,22 @@ function Election() {
         <Grid container>
           <form onSubmit={handleSubmit(onSubmit)}>
             <TextInput name="title" label="Titulo" />
-
             <TextInput name="description" label="Descripción" />
-
             <Grid container>
               <Grid item xs={12}>
                 <Typography
                   variant="body1"
                   textAlign="left"
-                  sx={{ marginBottom: "1.2em" }}
+                  sx={{
+                    color: "#545454",
+                    marginBottom: "1.2em",
+
+                    fontWeight: "600",
+                  }}
                 >
                   Horario de Votación
                 </Typography>
               </Grid>
-
               <LocalizationProvider dateAdapter={DateAdapter}>
                 <Grid
                   item
@@ -154,7 +160,7 @@ function Election() {
                       label="Duración"
                       InputLabelProps={{ shrink: true }}
                       variant="outlined"
-                      type="time"
+                      type="number"
                       fullWidth
                       sx={{ backgroundColor: "#f3f3f37d", borderRadius: 4 }}
                       {...field}
@@ -163,10 +169,16 @@ function Election() {
                 />
               </Grid>
             </Grid>
-
             <Grid container sx={{ marginBottom: "1.5em" }}>
               <Grid item xs={12}>
-                <Typography variant="body1" align="left">
+                <Typography
+                  variant="body1"
+                  align="left"
+                  sx={{
+                    color: "#545454",
+                    fontWeight: "600",
+                  }}
+                >
                   Tipo de Votación:
                 </Typography>
               </Grid>
@@ -197,10 +209,10 @@ function Election() {
             </TableContext.Provider>
 
             <Button
-              variant="contained"
+              variant="outlined"
               type="submit"
               onClick={handleOpenDialog}
-              sx={{ marginBottom: "1em" }}
+              size="large"
             >
               Crear elección
             </Button>
