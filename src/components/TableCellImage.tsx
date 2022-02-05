@@ -15,7 +15,9 @@ export default function TableCellImage({
   const { register, resetField } = useFormContext();
 
   return (
-    <TableCell sx={{ display: "flex", alignItems: "center" }}>
+    <TableCell
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center",  }}
+    >
       <label htmlFor="image-button-file">
         <input
           {...register(`${table}.${index}.${column}`)}
@@ -25,7 +27,7 @@ export default function TableCellImage({
           type="file"
           css={{ display: "none" }}
         />
-        <Button variant="contained" component="span" size="small">
+        <Button variant="outlined" component="span" size="small">
           Imagen
         </Button>
       </label>

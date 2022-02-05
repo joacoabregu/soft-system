@@ -40,8 +40,9 @@ export default function FormTableBody() {
                 <TextField
                   {...register(`${tableName}.${i}.${row}`, { required: true })}
                   id="outlined-basic"
-                  fullWidth
+                  // fullWidth
                   size="small"
+                  sx={{ backgroundColor: " #f3f3f37d", marginBottom: "0" }}
                 />
               </TableCell>
             );
@@ -58,8 +59,9 @@ export default function FormTableBody() {
                 <TextField
                   {...register(`${tableName}.${i}.${row}`, { required: true })}
                   id="outlined-basic"
-                  fullWidth
+                  // fullWidth
                   size="small"
+                  sx={{ backgroundColor: " #f3f3f37d", marginBottom: "0" }}
                 />
               </TableCell>
             );

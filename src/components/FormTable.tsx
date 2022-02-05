@@ -26,9 +26,17 @@ export default function FormTable() {
           marginBottom: "1em",
         }}
       >
-        <Typography>{title} </Typography>
+        <Typography
+          sx={{
+            color: "#545454",
+
+            fontWeight: "600",
+          }}
+        >
+          {title}{" "}
+        </Typography>
         <Button
-          variant="contained"
+          variant="outlined"
           onClick={() => setRowsNumber(rowsNumber + 1)}
         >
           <AddIcon />
@@ -37,13 +45,13 @@ export default function FormTable() {
       <TableContainer component={Paper} sx={{ marginBottom: "1em" }}>
         <Table>
           <TableHead>
-            <TableRow>
+            <TableRow sx={{ backgroundColor: "#dddddd" }}>
               {columns.map((column) => {
                 return (
                   <TableCell
                     key={column}
                     align="center"
-                    sx={{ fontWeight: 700 }}
+                    sx={{ fontWeight: 600 }}
                   >
                     {column}
                   </TableCell>

@@ -28,7 +28,7 @@ export default function TextInput({
             label={label}
             variant="outlined"
             fullWidth
-            sx={{ backgroundColor: "#f3f3f3", borderRadius: 4 }}
+            sx={{ backgroundColor:" #f3f3f37d", borderRadius: 4 }}
             {...field}
           />
         )}
