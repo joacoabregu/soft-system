@@ -1,11 +1,30 @@
 /** @jsxImportSource @emotion/react */
 import { jsx } from "@emotion/react";
+import IconButton from "@mui/material/IconButton";
 import React from "react";
-import logo from "../assets/logo-completo-color.png";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import logo from "../assets/logo-completo-color-edit.png";
+import { useColorModeContext } from "../context/ColorModeContext";
+import { useTheme } from "@mui/material/styles";
 
 function Nav() {
+  const colorMode = useColorModeContext();
+  const theme = useTheme();
+
   return (
     <nav css={styles.nav}>
+      <IconButton
+        sx={{ ml: 1, height: "fit-content" }}
+        onClick={colorMode.toggleColorMode}
+        color="inherit"
+      >
+        {theme.palette.mode === "dark" ? (
+          <Brightness7Icon />
+        ) : (
+          <Brightness4Icon />
+        )}
+      </IconButton>
       <img src={logo} alt="logo" css={styles.img} />
     </nav>
   );
@@ -14,12 +33,14 @@ function Nav() {
 const styles = {
   nav: {
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "3em",
   },
 
   img: {
     width: "100",
-    maxHeight: "150px",
+    maxHeight: "110px",
   },
 };
 
