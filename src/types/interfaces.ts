@@ -23,14 +23,35 @@ export interface FormInput {
   }[];
 }
 
-
 export interface TextInputProps {
-  name: "title" | "description" | "date" | "hour" | "endDate" | "endHour" | "type";
+  name:
+    | "title"
+    | "description"
+    | "date"
+    | "hour"
+    | "endDate"
+    | "endHour"
+    | "type";
   defaultValue?: string;
   label: string;
   style?: SxProps<Theme> | undefined;
   xs?: number;
   md?: number;
+}
+
+export interface TableCellImageProps {
+  table: "candidates";
+  column: "image";
+  index: number;
+}
+
+export interface DialogProps {
+  open: boolean;
+  setDialog: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface ToggleColorModeProps {
+  children: React.ReactNode;
 }
 
 export interface FormContextValue {
@@ -48,13 +69,6 @@ export interface TableContextValue {
   setRowsNumber: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export interface TableCellImageProps {
-  table: "candidates";
-  column: "image";
-  index: number;
-}
-
-export interface DialogProps {
-  open: boolean;
-  setDialog: React.Dispatch<React.SetStateAction<boolean>>;
+export interface ColorModeContextValue {
+  toggleColorMode: () => void;
 }
