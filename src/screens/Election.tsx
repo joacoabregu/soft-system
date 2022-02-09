@@ -19,6 +19,7 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import TimePicker from "@mui/lab/TimePicker";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { useTheme } from "@mui/material/styles";
 
 function Election() {
   const {
@@ -31,6 +32,11 @@ function Election() {
   const onSubmit: SubmitHandler<FormInput> = (data) => {
     console.log(data);
   };
+
+  const {
+    palette: { primary },
+    back
+  } = useTheme();
 
   const [openDialog, setOpenDialog] = React.useState(false);
   const handleOpenDialog = () => {
@@ -70,7 +76,7 @@ function Election() {
     <Container
       maxWidth="md"
       sx={{
-        backgroundColor: "white",
+        backgroundColor: back.main,
         borderRadius: 2,
         padding: { xs: "1em", md: "2em", lg: "3em" },
       }}
@@ -91,9 +97,8 @@ function Election() {
                   variant="body1"
                   textAlign="left"
                   sx={{
-                    color: "#545454",
+                    color: primary.main,
                     marginBottom: "1.2em",
-
                     fontWeight: "600",
                   }}
                 >
@@ -179,7 +184,7 @@ function Election() {
                   variant="body1"
                   align="left"
                   sx={{
-                    color: "#545454",
+                    color: primary.main,
                     fontWeight: "600",
                   }}
                 >
