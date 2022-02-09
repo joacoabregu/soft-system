@@ -12,48 +12,10 @@ import Grid from "@mui/material/Grid";
 import Alert from "@mui/material/Alert";
 
 import Dialog from "../components/Dialog";
-import { VotingForm, ICandidates } from "../types/interfaces";
+import { VotingForm } from "../types/interfaces";
+import {tokens, votingDate, candidates} from "../assets/mockData"
 
-const votingDate = {
-  starteDate: "15/01/2022 08:00",
-  endDate: "15/01/2022 18:00",
-};
 
-const candidates: ICandidates = {
-  candidate1: {
-    id: "1",
-    name: "Candidato1",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec rhoncus leo. Vestibulum sed turpis fringilla, efficitur risus eu, pretium.",
-    image: "https://picsum.photos/200",
-  },
-  candidate2: {
-    id: "2",
-    name: "Candidato2",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec rhoncus leo. Vestibulum sed turpis fringilla, efficitur risus eu, pretium.",
-    image: "https://picsum.photos/200",
-  },
-  candidate3: {
-    id: "3",
-    name: "Candidato3",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec rhoncus leo. Vestibulum sed turpis fringilla, efficitur risus eu, pretium.",
-    image: "https://picsum.photos/200",
-  },
-  candidate4: {
-    id: "4",
-    name: "Candidato4",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec rhoncus leo. Vestibulum sed turpis fringilla, efficitur risus eu, pretium.",
-    image: "https://picsum.photos/200",
-  },
-};
-
-const tokens = {
-  token1: "1",
-  token2: "2",
-};
 
 export default function Voting() {
   const {
@@ -67,7 +29,10 @@ export default function Voting() {
   const onSubmit: SubmitHandler<VotingForm> = (data) => {
     console.log(data);
   };
-  const { back } = useTheme();
+  const {
+    back,
+    palette: { primary },
+  } = useTheme();
   const [tokenAble, setTokenAble] = React.useState<boolean>(true);
   const [openDialog, setOpenDialog] = React.useState(false);
   const handleOpenDialog = (): void => {
@@ -93,26 +58,26 @@ export default function Voting() {
     <Container
       maxWidth="md"
       sx={{
-        backgroundColor: back.white,
+        backgroundColor: back.main,
         borderRadius: 2,
-        padding: { xs: "1em", md: "2em", lg: "3em" },
+        padding: { xs: "1.5em", md: "2em", lg: "3em" },
       }}
       disableGutters={true}
     >
       <Typography variant="h1" gutterBottom={true}>
         Votación Interna
       </Typography>
-      <Typography variant="h2" sx={{ mb: "1em" }}>
+      <Typography variant="h2" sx={{ mb: "1em", color: primary.main }}>
         Detalle de la votación interna
       </Typography>
-      <Typography variant="h3" gutterBottom={true}>
+      <Typography variant="h3" gutterBottom={true} sx={{ color: primary.main }}>
         Horario de votación:
       </Typography>
-      <Typography variant="body1" sx={{ mb: "2em" }}>
+      <Typography variant="body1" sx={{ mb: "2em", color: primary.main }}>
         {votingDate.starteDate} - {votingDate.endDate}
       </Typography>
 
-      <Typography variant="h3" gutterBottom={true}>
+      <Typography variant="h3" gutterBottom={true} sx={{ color: primary.main }}>
         Token / address
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -126,7 +91,7 @@ export default function Voting() {
               id="token"
               label="token"
               variant="outlined"
-              sx={{ maxWidth: "50%", mb: "3em" }}
+              sx={{ maxWidth: "50%", mb: "2em" }}
               {...field}
             />
           )}
@@ -143,12 +108,16 @@ export default function Voting() {
           {Object.entries(candidates).map(([key, candidate]) => {
             return (
               <Grid item xs={12} sm={6} key={key}>
-                <Card sx={{ padding: "0.5em" }}>
+                <Card sx={{ padding: "0.5em" }} raised>
                   <CardContent>
                     <Typography
                       variant="body1"
                       gutterBottom
-                      sx={{ fontSize: "1.3rem", fontWeight: 600 }}
+                      sx={{
+                        color: primary.main,
+                        fontSize: "1.3rem",
+                        fontWeight: 600,
+                      }}
                     >
                       {candidate.name}
                     </Typography>
