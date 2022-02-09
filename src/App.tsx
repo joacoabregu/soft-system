@@ -2,9 +2,10 @@ import React from "react";
 import { Nav } from "./components/Nav";
 import { Election } from "./screens/Election";
 import ToggleColorMode from "./components/ToggleColorMode";
+import { Routes, Route,  } from "react-router-dom";
+import Voting from "./screens/Voting"
 
 function App() {
- 
 
   return (
     <ToggleColorMode>
@@ -16,7 +17,10 @@ function App() {
         }}
       >
         <Nav />
-        <Election />
+        <Routes>
+          <Route path="/voting" element={<Voting />} />
+          <Route path="/" element={<Election />} />
+        </Routes>
       </div>
     </ToggleColorMode>
   );
