@@ -30,6 +30,12 @@ const theme = createTheme({
       fontSize: "2.3rem",
       fontWeight: 500,
     },
+    h2: {
+      fontSize: "2rem",
+    },
+    h3: {
+      fontSize: "1.7rem",
+    },
 
     fontFamily: [
       "Poppins",
@@ -82,4 +88,22 @@ const theme = createTheme({
   },
 });
 
-export { theme };
+const darkModeProps = {
+  back: { white: "#2b2b2b" },
+};
+
+function createMode(mode: "light" | "dark") {
+  return {
+    ...theme,
+    palette: {
+      ...theme.palette,
+      mode,
+    },
+    back: {
+      ...theme.back,
+      ...(mode === "dark" ? darkModeProps.back : null),
+    },
+  };
+}
+
+export { theme, createMode };
