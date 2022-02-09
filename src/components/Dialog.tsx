@@ -7,7 +7,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import {DialogProps} from "../types/interfaces"
 
 
-export default function AlertDialog({ open, setDialog }: DialogProps) {
+export default function AlertDialog({ open, setDialog, text }: DialogProps) {
   const handleClose = () => {
     setDialog(false);
   };
@@ -25,7 +25,7 @@ export default function AlertDialog({ open, setDialog }: DialogProps) {
         </IconButton>
       </DialogActions>
       <DialogTitle id="alert-dialog-title">
-        {"Elección creada con éxito!"}
+        {text}
       </DialogTitle>
     </Dialog>
   );
