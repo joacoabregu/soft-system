@@ -13,7 +13,9 @@ function Nav() {
   const theme = useTheme();
 
   return (
-    <nav css={styles.nav}>
+    <nav
+      css={{ ...styles.nav, backgroundColor: theme.palette.background.default }}
+    >
       <IconButton
         sx={{ ml: 1, height: "fit-content" }}
         onClick={colorMode.toggleColorMode}
