@@ -12,10 +12,13 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { useTableContext } from "../context/TableContext";
+import { useTheme } from "@mui/material/styles";
 
 export default function FormTable() {
   const { title, columns, setRowsNumber, rowsNumber } = useTableContext();
-
+  const {
+    palette: { primary, background },
+  } = useTheme();
   return (
     <>
       <Grid
@@ -28,8 +31,7 @@ export default function FormTable() {
       >
         <Typography
           sx={{
-            color: "#545454",
-
+            color: primary.main,
             fontWeight: "600",
           }}
         >
@@ -45,7 +47,7 @@ export default function FormTable() {
       <TableContainer component={Paper} sx={{ marginBottom: "1em" }}>
         <Table>
           <TableHead>
-            <TableRow sx={{ backgroundColor: "#dddddd" }}>
+            <TableRow sx={{ backgroundColor: background.default }}>
               {columns.map((column) => {
                 return (
                   <TableCell
