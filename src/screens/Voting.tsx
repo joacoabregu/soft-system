@@ -11,14 +11,13 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Alert from "@mui/material/Alert";
 
-
+import Dialog from "../components/Dialog";
 import { VotingForm, ICandidates } from "../types/interfaces";
 
 const votingDate = {
   starteDate: "15/01/2022 08:00",
   endDate: "15/01/2022 18:00",
 };
-
 
 const candidates: ICandidates = {
   candidate1: {
@@ -57,14 +56,26 @@ const tokens = {
 };
 
 export default function Voting() {
-  const { control, handleSubmit, formState, watch, setValue } =
-    useForm<VotingForm>();
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitted },
+    watch,
+    setValue,
+  } = useForm<VotingForm>();
+  const token = watch("token");
   const onSubmit: SubmitHandler<VotingForm> = (data) => {
     console.log(data);
   };
   const { back } = useTheme();
   const [tokenAble, setTokenAble] = React.useState<boolean>(true);
-  const token = watch("token");
+  const [openDialog, setOpenDialog] = React.useState(false);
+  const handleOpenDialog = (): void => {
+    if (isSubmitted) {
+      setOpenDialog(true);
+    }
+    return;
+  };
 
   React.useEffect(() => {
     if (
@@ -153,8 +164,12 @@ export default function Voting() {
                   <CardActions sx={{ justifyContent: "center" }}>
                     <Button
                       variant="outlined"
+                      size="large"
                       type="submit"
-                      onClick={() => setValue("candidate", candidate.id)}
+                      onClick={() => {
+                        setValue("candidate", candidate.id);
+                        handleOpenDialog();
+                      }}
                       disabled={!tokenAble}
                     >
                       Votar
@@ -166,6 +181,11 @@ export default function Voting() {
           })}
         </Grid>
       </form>
+      <Dialog
+        open={openDialog}
+        setDialog={setOpenDialog}
+        text="Voto realizado con éxito"
+      />
     </Container>
   );
 }

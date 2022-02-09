@@ -18,6 +18,7 @@ import DateAdapter from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import TimePicker from "@mui/lab/TimePicker";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 function Election() {
   const {
@@ -39,8 +40,8 @@ function Election() {
     return;
   };
 
-  const [rowsCandidates, setRowsCandidates] = React.useState<number>(1);
-  const [rowsVoters, setRowsVoters] = React.useState<number>(1);
+  const [rowsCandidates, setRowsCandidates] = React.useState<number>(2);
+  const [rowsVoters, setRowsVoters] = React.useState<number>(2);
 
   const tableCandidates: TableContextValue = {
     tableName: "candidates",
@@ -71,7 +72,7 @@ function Election() {
       sx={{
         backgroundColor: "white",
         borderRadius: 2,
-        padding: "3em",
+        padding: { xs: "1em", md: "2em", lg: "3em" },
       }}
       disableGutters={true}
     >
@@ -160,8 +161,11 @@ function Election() {
                       label="Duración"
                       InputLabelProps={{ shrink: true }}
                       variant="outlined"
-                      type="number"
+                      type="time"
                       fullWidth
+                      InputProps={{
+                        endAdornment: <AccessTimeIcon />,
+                      }}
                       sx={{ backgroundColor: "#f3f3f37d", borderRadius: 4 }}
                       {...field}
                     />
@@ -213,10 +217,15 @@ function Election() {
               type="submit"
               onClick={handleOpenDialog}
               size="large"
+              sx={{ mt: "2em" }}
             >
               Crear elección
             </Button>
-            <Dialog open={openDialog} setDialog={setOpenDialog} />
+            <Dialog
+              open={openDialog}
+              setDialog={setOpenDialog}
+              text="Elección realizada con éxito"
+            />
           </form>
         </Grid>
       </FormContext.Provider>
