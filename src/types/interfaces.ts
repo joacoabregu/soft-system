@@ -2,7 +2,7 @@ import { UseFormRegister, UseFormResetField } from "react-hook-form";
 import { Control } from "react-hook-form";
 import { SxProps, Theme } from "@mui/material/styles";
 
-import {candidate} from "./types"
+import { candidate } from "./types";
 
 export interface FormInput {
   title: string;
@@ -55,6 +55,7 @@ export interface TableCellImageProps {
 export interface DialogProps {
   open: boolean;
   setDialog: React.Dispatch<React.SetStateAction<boolean>>;
+  text: string;
 }
 
 export interface ToggleColorModeProps {
