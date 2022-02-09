@@ -3,11 +3,14 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import ToggleColorMode from "./components/ToggleColorMode";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ToggleColorMode>
+        <App />
+      </ToggleColorMode>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
