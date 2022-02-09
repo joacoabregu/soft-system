@@ -2,6 +2,8 @@ import { UseFormRegister, UseFormResetField } from "react-hook-form";
 import { Control } from "react-hook-form";
 import { SxProps, Theme } from "@mui/material/styles";
 
+import {candidate} from "./types"
+
 export interface FormInput {
   title: string;
   description: string;
@@ -39,6 +41,11 @@ export interface TextInputProps {
   md?: number;
 }
 
+export interface VotingForm {
+  token: string;
+  candidate: string;
+}
+
 export interface TableCellImageProps {
   table: "candidates";
   column: "image";
@@ -71,4 +78,8 @@ export interface TableContextValue {
 
 export interface ColorModeContextValue {
   toggleColorMode: () => void;
+}
+
+export interface ICandidates {
+  [key: string]: candidate;
 }
