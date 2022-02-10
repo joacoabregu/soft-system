@@ -4,8 +4,8 @@ import { Routes, Route } from "react-router-dom";
 
 import { Nav } from "./components/Nav";
 import { Election } from "./screens/Election";
-//import ToggleColorMode from "./components/ToggleColorMode";
 import Voting from "./screens/Voting";
+import Results from "./screens/Results";
 
 function App() {
   const {
@@ -23,6 +23,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/voting" element={<Voting />} />
+        <Route path="/results" element={<Results />} />
         <Route path="/" element={<Election />} />
       </Routes>
     </div>
