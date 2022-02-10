@@ -8,28 +8,28 @@ const votingDate = {
 const candidates: ICandidates = {
   candidate1: {
     id: "1",
-    name: "Candidato1",
+    name: "Candidato 1",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec rhoncus leo. Vestibulum sed turpis fringilla, efficitur risus eu, pretium.",
     image: "https://picsum.photos/200",
   },
   candidate2: {
     id: "2",
-    name: "Candidato2",
+    name: "Candidato 2",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec rhoncus leo. Vestibulum sed turpis fringilla, efficitur risus eu, pretium.",
     image: "https://picsum.photos/200",
   },
   candidate3: {
     id: "3",
-    name: "Candidato3",
+    name: "Candidato 3",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec rhoncus leo. Vestibulum sed turpis fringilla, efficitur risus eu, pretium.",
     image: "https://picsum.photos/200",
   },
   candidate4: {
     id: "4",
-    name: "Candidato4",
+    name: "Candidato 4",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec rhoncus leo. Vestibulum sed turpis fringilla, efficitur risus eu, pretium.",
     image: "https://picsum.photos/200",
@@ -41,4 +41,42 @@ const tokens = {
   token2: "2",
 };
 
-export { tokens, candidates, votingDate };
+const votingResults = {
+  winnerId: "2",
+  results: {
+    candidate1: {
+      id: "1",
+      name: "Candidato 1",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec rhoncus leo. Vestibulum sed turpis fringilla, efficitur risus eu, pretium.",
+      image: "https://picsum.photos/200",
+      votes: 7,
+    },
+    candidate2: {
+      id: "2",
+      name: "Candidato 2",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec rhoncus leo. Vestibulum sed turpis fringilla, efficitur risus eu, pretium.",
+      image: "https://picsum.photos/200",
+      votes: 8,
+    },
+    candidate3: {
+      id: "3",
+      name: "Candidato 3",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec rhoncus leo. Vestibulum sed turpis fringilla, efficitur risus eu, pretium.",
+      image: "https://picsum.photos/200",
+      votes: 4,
+    },
+    candidate4: {
+      id: "4",
+      name: "Candidato 4",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec rhoncus leo. Vestibulum sed turpis fringilla, efficitur risus eu, pretium.",
+      image: "https://picsum.photos/200",
+      votes: 2,
+    },
+  },
+};
+
+export { tokens, candidates, votingDate, votingResults };
