@@ -39,12 +39,12 @@ function Election() {
   } = useTheme();
 
   const [openDialog, setOpenDialog] = React.useState(false);
-  const handleOpenDialog = () => {
+
+  React.useEffect(() => {
     if (isSubmitted) {
       setOpenDialog(true);
     }
-    return;
-  };
+  }, [isSubmitted]);
 
   const [rowsCandidates, setRowsCandidates] = React.useState<number>(2);
   const [rowsVoters, setRowsVoters] = React.useState<number>(2);
@@ -225,7 +225,6 @@ function Election() {
             <Button
               variant="outlined"
               type="submit"
-              onClick={handleOpenDialog}
               size="large"
               sx={{ mt: "2em" }}
             >

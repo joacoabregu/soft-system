@@ -33,12 +33,12 @@ export default function Voting() {
   } = useTheme();
   const [tokenAble, setTokenAble] = React.useState<boolean>(true);
   const [openDialog, setOpenDialog] = React.useState(false);
-  const handleOpenDialog = (): void => {
+
+  React.useEffect(() => {
     if (isSubmitted) {
       setOpenDialog(true);
     }
-    return;
-  };
+  }, [isSubmitted]);
 
   React.useEffect(() => {
     if (
@@ -135,7 +135,6 @@ export default function Voting() {
                       type="submit"
                       onClick={() => {
                         setValue("candidate", candidate.id);
-                        handleOpenDialog();
                       }}
                       disabled={!tokenAble}
                     >
