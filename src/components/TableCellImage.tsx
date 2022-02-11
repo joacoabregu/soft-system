@@ -16,7 +16,7 @@ export default function TableCellImage({
 
   return (
     <TableCell
-      sx={{ display: "flex", justifyContent: "center", alignItems: "center",  }}
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
     >
       <label htmlFor="image-button-file">
         <input
@@ -34,6 +34,7 @@ export default function TableCellImage({
       <IconButton
         aria-label="delete"
         onClick={() => resetField(`${table}.${index}.${column}`)}
+        color="primary"
       >
         <DeleteIcon />
       </IconButton>
