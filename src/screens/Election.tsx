@@ -34,8 +34,8 @@ function Election() {
   };
 
   const {
-    palette: { primary },
-    back
+    palette: { primary, text },
+    back,
   } = useTheme();
 
   const [openDialog, setOpenDialog] = React.useState(false);
@@ -82,7 +82,12 @@ function Election() {
       }}
       disableGutters={true}
     >
-      <Typography variant="h1" gutterBottom={true} align="left">
+      <Typography
+        variant="h1"
+        gutterBottom={true}
+        align="left"
+        sx={{ color: text.primary }}
+      >
         Crear Elección
       </Typography>
       <Divider />
@@ -197,7 +202,7 @@ function Election() {
                   control={control}
                   defaultValue="token"
                   render={({ field }) => (
-                    <ToggleButtonGroup color="primary" exclusive {...field}>
+                    <ToggleButtonGroup exclusive {...field}>
                       <ToggleButton value="token" size="large">
                         Token
                       </ToggleButton>

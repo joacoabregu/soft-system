@@ -13,9 +13,7 @@ import Alert from "@mui/material/Alert";
 
 import Dialog from "../components/Dialog";
 import { VotingForm } from "../types/interfaces";
-import {tokens, votingDate, candidates} from "../assets/mockData"
-
-
+import { tokens, votingDate, candidates } from "../assets/mockData";
 
 export default function Voting() {
   const {
@@ -31,7 +29,7 @@ export default function Voting() {
   };
   const {
     back,
-    palette: { primary },
+    palette: { primary, text },
   } = useTheme();
   const [tokenAble, setTokenAble] = React.useState<boolean>(true);
   const [openDialog, setOpenDialog] = React.useState(false);
@@ -64,7 +62,7 @@ export default function Voting() {
       }}
       disableGutters={true}
     >
-      <Typography variant="h1" gutterBottom={true}>
+      <Typography variant="h1" gutterBottom={true} sx={{ color: text.primary }}>
         Votación Interna
       </Typography>
       <Typography variant="h2" sx={{ mb: "1em", color: primary.main }}>

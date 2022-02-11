@@ -7,15 +7,15 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-
-import { votingDate, votingResults } from "../assets/mockData";
 import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
+
+import { votingDate, votingResults } from "../assets/mockData";
 
 export default function Results() {
   const {
     back,
-    palette: { primary },
+    palette: { primary, text },
   } = useTheme();
   return (
     <Container
@@ -27,9 +27,10 @@ export default function Results() {
       }}
       disableGutters={true}
     >
-      <Typography variant="h1" gutterBottom={true}>
+      <Typography variant="h1" gutterBottom={true} sx={{ color: text.primary }}>
         Votación Interna
       </Typography>
+
       <Typography variant="h2" sx={{ mb: "1em", color: primary.main }}>
         Detalle de la votación interna
       </Typography>
@@ -60,7 +61,11 @@ export default function Results() {
                       iconMapping={{
                         success: <EmojiEventsIcon sx={{ fontSize: 30 }} />,
                       }}
-                      sx={{ fontSize: "1.5rem", mb: "0.5em" }}
+                      sx={{
+                        fontSize: "1.5rem",
+                        mb: "0.5em",
+                        justifyContent: "center",
+                      }}
                     >
                       Ganador
                     </Alert>
@@ -90,7 +95,7 @@ export default function Results() {
                     component="span"
                     sx={{
                       p: 2,
-                      border: "1px dotted grey",
+                      border: "1px solid #585757",
                       borderRadius: "0.5em",
                     }}
                   >
