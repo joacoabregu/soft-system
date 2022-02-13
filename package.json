@@ -2,6 +2,7 @@
   "name": "softsystem",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://yourusername.github.io/repository-name",
   "dependencies": {
     "@date-io/date-fns": "^2.13.1",
     "@emotion/react": "^11.7.1",
@@ -48,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
