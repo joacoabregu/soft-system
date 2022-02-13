@@ -1,11 +1,12 @@
 import React from "react";
 import useTheme from "@mui/material/styles/useTheme";
 import { Routes, Route } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import { Nav } from "./components/Nav";
 import { Election } from "./screens/Election";
-import Voting from "./screens/Voting";
-import Results from "./screens/Results";
+const Results = React.lazy(() => import("./screens/Results"));
+const Voting = React.lazy(() => import("./screens/Voting"));
 
 function App() {
   const {
@@ -21,11 +22,14 @@ function App() {
       }}
     >
       <Nav />
-      <Routes>
-        <Route path="/voting" element={<Voting />} />
-        <Route path="/results" element={<Results />} />
-        <Route path="/" element={<Election />} />
-      </Routes>
+      <React.Suspense fallback={<CircularProgress />}>
+        <Routes>
+          <Route path="/voting" element={<Voting />} />
+          <Route path="/results" element={<Results />} />
+
+          <Route path="/" element={<Election />} />
+        </Routes>
+      </React.Suspense>
     </div>
   );
 }
