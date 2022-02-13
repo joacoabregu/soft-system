@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/soft-system/static/js/main.99434d3a.js",
+    "main.js": "/soft-system/static/js/main.244ec74f.js",
     "static/js/534.b351fac6.chunk.js": "/soft-system/static/js/534.b351fac6.chunk.js",
     "static/js/55.944d987f.chunk.js": "/soft-system/static/js/55.944d987f.chunk.js",
     "static/js/787.769943eb.chunk.js": "/soft-system/static/js/787.769943eb.chunk.js",
     "static/js/256.faee123c.chunk.js": "/soft-system/static/js/256.faee123c.chunk.js",
     "static/media/logo-completo-color-edit.png": "/soft-system/static/media/logo-completo-color-edit.b6f09232a890022bb5f9.png",
     "index.html": "/soft-system/index.html",
-    "main.99434d3a.js.map": "/soft-system/static/js/main.99434d3a.js.map",
+    "main.244ec74f.js.map": "/soft-system/static/js/main.244ec74f.js.map",
     "534.b351fac6.chunk.js.map": "/soft-system/static/js/534.b351fac6.chunk.js.map",
     "55.944d987f.chunk.js.map": "/soft-system/static/js/55.944d987f.chunk.js.map",
     "787.769943eb.chunk.js.map": "/soft-system/static/js/787.769943eb.chunk.js.map",
     "256.faee123c.chunk.js.map": "/soft-system/static/js/256.faee123c.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.99434d3a.js"
+    "static/js/main.244ec74f.js"
   ]
 }
