@@ -26,7 +26,6 @@ function App() {
         <Routes>
           <Route path="/voting" element={<Voting />} />
           <Route path="/results" element={<Results />} />
-
           <Route path="/" element={<Election />} />
         </Routes>
       </React.Suspense>
